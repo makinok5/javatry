@@ -25,7 +25,7 @@ import org.docksidestage.unit.PlainTestCase;
  * Operate exercise as javadoc. If it's question style, write your answer before test execution. <br>
  * (javadocの通りにエクササイズを実施。質問形式の場合はテストを実行する前に考えて答えを書いてみましょう)
  * @author jflute
- * @author your_name_here
+ * @author makinok5
  */
 public class Step02IfForTest extends PlainTestCase {
 
@@ -52,7 +52,7 @@ public class Step02IfForTest extends PlainTestCase {
         } else {
             sea = 7;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -67,7 +67,7 @@ public class Step02IfForTest extends PlainTestCase {
         } else {
             sea = 9;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 7
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -91,7 +91,7 @@ public class Step02IfForTest extends PlainTestCase {
         if (land) {
             sea = 10;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => 10
     }
 
     // ===================================================================================
@@ -107,7 +107,7 @@ public class Step02IfForTest extends PlainTestCase {
                 sea = stage;
             }
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => dockside
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -117,7 +117,7 @@ public class Step02IfForTest extends PlainTestCase {
         for (String stage : stageList) {
             sea = stage;
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => magiclamp
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -133,7 +133,7 @@ public class Step02IfForTest extends PlainTestCase {
                 break;
             }
         }
-        log(sea); // your answer? => 
+        log(sea); // your answer? => hangar
     }
 
     /** Same as the previous method question. (前のメソッドの質問と同じ) */
@@ -149,7 +149,7 @@ public class Step02IfForTest extends PlainTestCase {
             }
         });
         String sea = sb.toString();
-        log(sea); // your answer? => 
+        log(sea); // your answer? => dockside
     }
 
     // ===================================================================================
@@ -161,6 +161,17 @@ public class Step02IfForTest extends PlainTestCase {
      */
     public void test_iffor_making() {
         // write if-for here
+        List<String> stageList = prepareStageList();
+        List<String> aList = new ArrayList<>();
+        //String sea=null;
+        for (String stage : stageList) {
+            if (stage.contains("a")) {
+                aList.add(stage);
+            }
+        }
+        for (String sea : aList) {
+            log(sea);
+        }
     }
 
     // ===================================================================================
@@ -172,16 +183,14 @@ public class Step02IfForTest extends PlainTestCase {
      */
     public void test_iffor_refactor_foreach_to_forEach() {
         List<String> stageList = prepareStageList();
-        String sea = null;
-        for (String stage : stageList) {
-            if (stage.startsWith("br")) {
-                continue;
-            }
-            sea = stage;
+        StringBuilder sb = new StringBuilder();
+        stageList.forEach(stage -> {
             if (stage.contains("ga")) {
-                break;
+                sb.append(stage);
+                return;
             }
-        }
+        });
+        String sea = sb.toString();
         log(sea); // should be same as before-fix
     }
 
