@@ -25,7 +25,6 @@ public class TicketBooth {
     //                                                                          ==========
     private static final int MAX_QUANTITY = 10;
     private static final int ONE_DAY_PRICE = 7400; // when 2019/06/15
-    private static final int TWO_DAY_PRICE = 13200; // when 2019/06/15
 
     // ===================================================================================
     //                                                                           Attribute
@@ -60,33 +59,15 @@ public class TicketBooth {
         if (quantity <= 0) {
             throw new TicketSoldOutException("Sold out");
         }
+        --quantity;
         if (handedMoney < ONE_DAY_PRICE) {
             throw new TicketShortMoneyException("Short money: " + handedMoney);
         }
         if (salesProceeds != null) { // second or more purchase
-            salesProceeds += ONE_DAY_PRICE;
-            --quantity;
+            salesProceeds = salesProceeds + handedMoney;
         } else { // first purchase
-            salesProceeds = ONE_DAY_PRICE;
-            --quantity;
+            salesProceeds = handedMoney;
         }
-    }
-
-    public int buyTwoDayPassport(Integer handedMoney) {
-        if (quantity <= 0) {
-            throw new TicketSoldOutException("Sold out");
-        }
-        if (handedMoney < ONE_DAY_PRICE) {
-            throw new TicketShortMoneyException("Short money: " + handedMoney);
-        }
-        if (salesProceeds != null) { // second or more purchase
-            salesProceeds += TWO_DAY_PRICE;
-            --quantity;
-        } else { // first purchase
-            salesProceeds = TWO_DAY_PRICE;
-            --quantity;
-        }
-        return handedMoney - salesProceeds;
     }
 
     public static class TicketSoldOutException extends RuntimeException {

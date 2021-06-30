@@ -26,7 +26,7 @@ import org.docksidestage.unit.PlainTestCase;
  * Operate exercise as javadoc. If it's question style, write your answer before test execution. <br>
  * (javadocの通りにエクササイズを実施。質問形式の場合はテストを実行する前に考えて答えを書いてみましょう)
  * @author jflute
- * @author makinok5
+ * @author your_name_here
  */
 public class Step03DataTypeTest extends PlainTestCase {
 
@@ -54,7 +54,7 @@ public class Step03DataTypeTest extends PlainTestCase {
             BigDecimal addedDecimal = amba.add(new BigDecimal(land));
             sea = String.valueOf(addedDecimal);
         }
-        log(sea); // your answer? => 18.4
+        log(sea); // your answer? => 
     }
 
     // ===================================================================================
@@ -82,7 +82,7 @@ public class Step03DataTypeTest extends PlainTestCase {
         if ((int) dstore > piari) {
             sea = 0;
         }
-        log(sea); // your answer? => 2
+        log(sea); // your answer? => 
     }
 
     // ===================================================================================
@@ -92,7 +92,7 @@ public class Step03DataTypeTest extends PlainTestCase {
     public void test_datatype_object() {
         St3ImmutableStage stage = new St3ImmutableStage("hangar");
         String sea = stage.getStageName();
-        log(sea); // your answer? => hanger
+        log(sea); // your answer? => 
     }
 
     private static class St3ImmutableStage {
